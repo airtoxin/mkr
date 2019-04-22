@@ -1,7 +1,6 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
-import { connectRouter, routerMiddleware } from "connected-react-router";
-import { hist } from "./history";
 import { counter } from "./features/CounterPage";
+import {globalNotificationMiddleware} from "./features/GlobalNotification";
 
 const composeEnhancers =
   (process.env.NODE_ENV !== "production" &&
@@ -9,13 +8,12 @@ const composeEnhancers =
   compose;
 
 const reducer = combineReducers({
-  router: connectRouter(hist),
   counter
 });
 
 export const store = createStore(
   reducer,
-  composeEnhancers(applyMiddleware(routerMiddleware(hist)))
+  composeEnhancers(applyMiddleware(globalNotificationMiddleware()))
 );
 
 export type RootState = ReturnType<typeof reducer>;

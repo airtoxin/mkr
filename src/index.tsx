@@ -1,17 +1,18 @@
 import {css, Global, jsx} from "@emotion/core";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
+import {StoreContext} from "redux-react-hook";
 import { store } from "./store";
-import { ConnectedRouter } from "connected-react-router";
-import { hist } from "./history";
 import { Routes } from "./Routes";
+import {BrowserRouter} from "react-router-dom";
+import {GlobalNotification} from "./features/GlobalNotification";
 
 const APP_ID = "app";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={hist}>
+  <StoreContext.Provider value={store}>
+    <BrowserRouter>
       {[
+        <GlobalNotification/>,
         <Global
           styles={css({
             [`html, body, #${APP_ID}`]: {
@@ -28,7 +29,7 @@ ReactDOM.render(
         />,
         <Routes />
       ]}
-    </ConnectedRouter>
-  </Provider>,
+    </BrowserRouter>
+  </StoreContext.Provider>,
   document.getElementById(APP_ID)
 );
