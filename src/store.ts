@@ -1,6 +1,6 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { counter } from "./features/CounterPage";
-import {globalNotificationMiddleware} from "./features/GlobalNotification";
+import { globalNotificationMiddleware } from "./features/GlobalNotification";
 
 const composeEnhancers =
   (process.env.NODE_ENV !== "production" &&

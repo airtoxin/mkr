@@ -1,10 +1,10 @@
-import {css, Global, jsx} from "@emotion/core";
+import { css, Global, jsx } from "@emotion/core";
 import ReactDOM from "react-dom";
-import {StoreContext} from "redux-react-hook";
+import { StoreContext } from "redux-react-hook";
 import { store } from "./store";
 import { Routes } from "./Routes";
-import {BrowserRouter} from "react-router-dom";
-import {GlobalNotification} from "./features/GlobalNotification";
+import { BrowserRouter } from "react-router-dom";
+import { GlobalNotification } from "./features/GlobalNotification";
 
 const APP_ID = "app";
 
@@ -12,7 +12,7 @@ ReactDOM.render(
   <StoreContext.Provider value={store}>
     <BrowserRouter>
       {[
-        <GlobalNotification/>,
+        <GlobalNotification />,
         <Global
           styles={css({
             [`html, body, #${APP_ID}`]: {

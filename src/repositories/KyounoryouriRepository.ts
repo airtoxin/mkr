@@ -1,10 +1,9 @@
 export type SearchParams = {
-  keywords: string[],
+  keywords: string[];
 };
 
 export class KyounoryouriRepository {
   search = async (params: SearchParams): Promise<string[]> => {
-    throw new Error();
     return params.keywords;
   };
 }

@@ -1,15 +1,19 @@
-import {FunctionComponent, useCallback, useEffect} from "react";
+import { FunctionComponent, useCallback, useEffect } from "react";
 import { jsx } from "@emotion/core";
-import NotificationSystem, {System, Notification} from "react-notification-system";
-import {Middleware} from "redux";
-import {RootState} from "../store";
-import {useDispatch} from "redux-react-hook";
+import NotificationSystem, {
+  System,
+  Notification
+} from "react-notification-system";
+import { Middleware } from "redux";
+import { RootState } from "../store";
+import { useDispatch } from "redux-react-hook";
 
 let isMounted = false;
 
 export const GlobalNotification: FunctionComponent = () => {
   useEffect(() => {
-    if (isMounted) throw new Error("GlobalNotificationComponent was already mounted");
+    if (isMounted)
+      throw new Error("GlobalNotificationComponent was already mounted");
     isMounted = true;
   }, []);
   const dispatch = useDispatch();
@@ -18,7 +22,7 @@ export const GlobalNotification: FunctionComponent = () => {
     dispatch(globalNotificationInitializeAction(ref));
   }, []);
 
-  return <NotificationSystem ref={onRef}/>;
+  return <NotificationSystem ref={onRef} />;
 };
 
 export const globalNotificationInitializeAction = (ref: System) => ({
@@ -31,14 +35,22 @@ export const notifyGlobally = (notification: Notification) => ({
   payload: { notification }
 });
 
-type Action = ReturnType<typeof globalNotificationInitializeAction | typeof notifyGlobally>;
+type Action = ReturnType<
+  typeof globalNotificationInitializeAction | typeof notifyGlobally
+>;
 
-export const globalNotificationMiddleware: () => Middleware<{}, RootState> = () => {
+export const globalNotificationMiddleware: () => Middleware<
+  {},
+  RootState
+> = () => {
   let ref: System | undefined;
   let queue: Notification[] = [];
 
   return () => next => (action: Action) => {
-    if (action.type === "globalNotificationMiddleware/globalNotificationInitializeAction") {
+    if (
+      action.type ===
+      "globalNotificationMiddleware/globalNotificationInitializeAction"
+    ) {
       ref = action.payload.ref;
 
       if (queue.length !== 0) {
