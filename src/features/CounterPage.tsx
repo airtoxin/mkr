@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { AnyAction, Reducer } from "redux";
 import { RootState } from "../store";
+import { jsx } from "@emotion/core";
 
 export interface Props {
   count: number;

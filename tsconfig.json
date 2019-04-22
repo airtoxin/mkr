@@ -3,6 +3,7 @@
     "target": "es2015",
     "module": "commonjs",
     "jsx": "react",
+    "jsxFactory": "jsx",
     "outDir": "dist",
     "strict": true,
     "allowSyntheticDefaultImports": true,

@@ -1,4 +1,4 @@
-import React from "react";
+import { jsx } from "@emotion/core";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { store } from "./store";
@@ -14,9 +14,9 @@ setupGlobalCss(APP_ID);
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={hist}>
-      <>
+      {[
         <Routes />
-      </>
+      ]}
     </ConnectedRouter>
   </Provider>,
   document.getElementById(APP_ID)
