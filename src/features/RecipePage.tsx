@@ -4,7 +4,7 @@ import { kyounoryouriRepository } from "../repositories/KyounoryouriRepository";
 import { useDispatch } from "redux-react-hook";
 import { notifyGlobally } from "./GlobalNotification";
 import useRouter from "use-react-router/use-react-router";
-import queryString from "query-string";
+import * as queryString from "query-string";
 
 export const RecipePage: React.FunctionComponent = () => {
   const [keywords, setKeywords] = useState<string[]>([]);
