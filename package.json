@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.10",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "history": "4.9.0",
     "query-string": "^6.4.2",
     "react": "16.8.6",
